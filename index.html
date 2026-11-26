@@ -1,0 +1,885 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dennis Fresnido | Portfolio</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Raleway:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --black: #02060E;
+      --crimson: #C50337;
+      --crimson-dark: #65001D;
+      --crimson-deep: #8A0030;
+      --crimson-light: #E21C50;
+      --white: #FFFFFF;
+      --muted: #BDBDC7;
+
+      --background: #02060E;
+      --surface: #140815;
+      --accent: #C50337;
+      --text: #FFFFFF;
+      --muted: #BDBDC7;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
+    body {
+      font-family: "Raleway", sans-serif;
+      background: var(--background);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, .brand {
+      font-family: "Raleway", sans-serif;
+    }
+
+    .accent {
+      color: var(--crimson);
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .section-label {
+      color: var(--crimson-light);
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      font-size: .75rem;
+      font-weight: 700;
+    }
+
+    .section-title {
+      font-size: clamp(2rem,4vw,3.5rem);
+      letter-spacing: -.04em;
+      font-weight: 800;
+      line-height: 1.1;
+    }
+
+    .button-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: .65rem;
+      background: var(--crimson);
+      color: white;
+      padding: .9rem 1.4rem;
+      border-radius: 999px;
+      font-weight: 700;
+      transition: .25s;
+    }
+
+    .button-primary:hover {
+      transform: translateY(-3px);
+      background: var(--crimson-light);
+      box-shadow: 0 10px 30px rgba(197,3,55,.3);
+    }
+
+    .button-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: .65rem;
+      border: 1px solid rgba(197,3,55,.5);
+      color: white;
+      padding: .9rem 1.4rem;
+      border-radius: 999px;
+      transition: .25s;
+    }
+
+    .button-outline:hover {
+      border-color: var(--crimson);
+      color: var(--crimson-light);
+      transform: translateY(-3px);
+    }
+
+    .glass {
+      background: rgba(197,3,55,.08);
+      border: 1px solid rgba(197,3,55,.15);
+      backdrop-filter: blur(14px);
+    }
+
+    .soft-card {
+      background: linear-gradient(145deg,rgba(20,8,21,.98),rgba(2,6,14,.98));
+      border: 1px solid rgba(197,3,55,.15);
+      border-radius: 1.5rem;
+      transition: .3s;
+    }
+
+    .soft-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(197,3,55,.5);
+      box-shadow: 0 15px 40px rgba(197,3,55,.1);
+    }
+
+    .nav-link {
+      color: rgba(255,255,255,.75);
+      transition: .2s;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: var(--crimson-light);
+    }
+
+    .hero-bg {
+      background:
+        radial-gradient(ellipse at 15% 75%,rgba(197,3,55,.22),transparent 45%),
+        radial-gradient(ellipse at 80% 20%,rgba(138,0,48,.25),transparent 45%),
+        linear-gradient(135deg,#02060E,#10000A,#65001D);
+    }
+
+    .hero-image-wrap {
+      background: linear-gradient(145deg,#C50337,#65001D,#02060E);
+      padding: 8px;
+      border-radius: 2rem;
+      max-width: 420px;
+      width: 100%;
+      box-shadow: 0 25px 80px rgba(197,3,55,.15);
+    }
+
+    .hero-image-wrap img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 1.6rem;
+    }
+
+    .gallery-card {
+      padding: 1rem;
+      overflow: hidden;
+    }
+
+    .gallery-image {
+      width: 100%;
+      height: auto;
+      max-height: 650px;
+      object-fit: contain;
+      display: block;
+      border-radius: .8rem;
+    }
+
+    .gallery-card:hover {
+      border-color: rgba(197,3,55,.5);
+    }
+
+    .homepage-frame {
+      margin-top: 1.5rem;
+      padding: .6rem;
+      border: 1px solid rgba(197,3,55,.4);
+      border-radius: 1rem;
+      background: rgba(2,6,14,.9);
+      overflow: hidden;
+    }
+
+    .homepage-frame img {
+      width: 100%;
+      height: auto;
+      max-height: 700px;
+      object-fit: contain;
+      display: block;
+      border-radius: .65rem;
+    }
+
+    .timeline-line {
+      border-left: 1px solid rgba(197,3,55,.4);
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: -6px;
+      top: 6px;
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: var(--crimson);
+      box-shadow: 0 0 15px rgba(197,3,55,.5);
+    }
+
+    .loader {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: var(--black);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity .5s;
+    }
+
+    .loader-bar {
+      width: 220px;
+      height: 3px;
+      background: rgba(197,3,55,.15);
+      overflow: hidden;
+      margin-top: 1.5rem;
+    }
+
+    .loader-bar span {
+      display: block;
+      height: 100%;
+      background: var(--crimson);
+      animation: load 1.7s ease forwards;
+    }
+
+    @keyframes load {
+      to {
+        width: 100%;
+      }
+    }
+
+    .crimson-glow {
+      text-shadow: 0 0 30px rgba(197,3,55,.3);
+    }
+
+    .section-alt {
+      background: linear-gradient(180deg,#02060E,#10000A);
+    }
+
+    .skill-bar {
+      background: linear-gradient(90deg,#65001D,#C50337);
+    }
+
+    /* Contact Section */
+    .contact-links {
+      background: linear-gradient(180deg,#10000A,#02060E);
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.2rem 1.5rem;
+      border: 1px solid rgba(197,3,55,.2);
+      background: rgba(197,3,55,.05);
+      border-radius: 1rem;
+      transition: .3s ease;
+      color: white;
+    }
+
+    .contact-link:hover {
+      transform: translateY(-4px);
+      border-color: var(--crimson);
+      background: rgba(197,3,55,.12);
+      box-shadow: 0 10px 30px rgba(197,3,55,.12);
+    }
+
+    .contact-link i.contact-icon {
+      font-size: 1.5rem;
+      color: var(--crimson-light);
+      width: 30px;
+      text-align: center;
+    }
+
+    .contact-label {
+      font-weight: 700;
+    }
+
+    .contact-subtext {
+      font-size: .85rem;
+      color: var(--muted);
+    }
+
+    @media(max-width:768px) {
+      .gallery-image {
+        max-height: 520px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Loading Intro -->
+  <div id="loader" class="loader">
+    <div class="text-center">
+      <p class="section-label">Portfolio / 2026</p>
+      <h1 class="brand text-4xl md:text-5xl font-extrabold mt-3">
+        DENNIS <span class="accent">FRESNIDO</span>
+      </h1>
+      <div class="loader-bar mx-auto"><span></span></div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="fixed top-0 inset-x-0 z-50 border-b border-[#C50337]/10 bg-[#02060E]/85 backdrop-blur-xl">
+    <div class="max-w-7xl mx-auto px-5 md:px-8 py-4 flex justify-between items-center">
+
+      <a href="#home" class="brand text-xl font-extrabold tracking-tight">
+        D<span class="accent">.</span>FRESNIDO
+      </a>
+
+      <nav class="hidden md:flex items-center gap-7 text-sm font-semibold">
+        <a class="nav-link" href="#home">Home</a>
+        <a class="nav-link" href="#info">About</a>
+        <a class="nav-link" href="#skills">Skills</a>
+        <a class="nav-link" href="#experience">Experience</a>
+        <a class="nav-link" href="#education">Education</a>
+        <a class="nav-link" href="#certificates">Certificates</a>
+      </nav>
+
+      <button id="menu-btn" class="md:hidden text-white text-xl"
+              aria-label="Open menu" aria-expanded="false">
+        <i id="menu-icon" class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <nav id="mobile-menu" class="hidden md:hidden px-5 pb-5 pt-2 space-y-4 bg-[#02060E] border-t border-[#C50337]/10">
+      <a href="#home" class="mobile-link block nav-link">Home</a>
+      <a href="#info" class="mobile-link block nav-link">About</a>
+      <a href="#skills" class="mobile-link block nav-link">Skills</a>
+      <a href="#experience" class="mobile-link block nav-link">Experience</a>
+      <a href="#education" class="mobile-link block nav-link">Education</a>
+      <a href="#certificates" class="mobile-link block nav-link">Certificates</a>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section id="home" class="hero-bg min-h-screen flex items-center pt-28 pb-20 px-5 md:px-8">
+    <div class="max-w-7xl mx-auto grid md:grid-cols-[1.1fr_.9fr] gap-12 lg:gap-20 items-center">
+
+      <div class="order-2 md:order-1">
+        <p class="section-label mb-5">
+          Computer Science Student · Creative Designer
+        </p>
+
+        <h1 class="section-title text-5xl md:text-7xl mb-6">
+          Designing with purpose.<br>
+          <span class="accent crimson-glow">Building with ideas.</span>
+        </h1>
+
+        <p class="muted text-lg leading-relaxed max-w-2xl mb-8">
+          Hi, I'm Dennis Fresnido — a Computer Science student interested in web development,
+          graphic design, and creating thoughtful digital experiences that bring ideas to life.
+        </p>
+
+        <div class="flex flex-wrap gap-3">
+          <a href="#info" class="button-primary">
+            Explore my portfolio <i class="fa-solid fa-arrow-down"></i>
+          </a>
+
+          <a href="#graphics" class="button-outline">
+            View creative work <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </a>
+        </div>
+
+        <div class="flex gap-4 mt-9">
+          <a href="https://www.facebook.com/dennis.ii.399"
+             target="_blank"
+             rel="noopener noreferrer"
+             aria-label="Facebook"
+             class="button-outline !p-3">
+            <i class="fa-brands fa-facebook-f"></i>
+          </a>
+
+          <a href="https://www.instagram.com/itsurboi_babablacksheep/"
+             target="_blank"
+             rel="noopener noreferrer"
+             aria-label="Instagram"
+             class="button-outline !p-3">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+
+          <a href="https://www.tiktok.com/@tsukishi.ii?lang=en"
+             target="_blank"
+             rel="noopener noreferrer"
+             aria-label="TikTok"
+             class="button-outline !p-3">
+            <i class="fa-brands fa-tiktok"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="order-1 md:order-2 flex justify-center">
+        <div class="hero-image-wrap">
+          <img src="photo.png" alt="Portrait of Dennis Fresnido">
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="info" class="py-24 px-5 md:px-8">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid lg:grid-cols-2 gap-12 items-start">
+
+        <div>
+          <p class="section-label mb-4">01 / About</p>
+
+          <h2 class="section-title mb-7">
+            A little about <span class="accent">me.</span>
+          </h2>
+
+          <p class="muted leading-relaxed text-lg">
+            I am an aspiring developer and designer who enjoys combining technical skills
+            with creative thinking. I like exploring ideas, learning new tools, and
+            collaborating to create practical and visually engaging projects.
+          </p>
+
+          <div class="mt-8 flex flex-wrap gap-3">
+            <span class="glass rounded-full px-4 py-2 text-sm">Web Development</span>
+            <span class="glass rounded-full px-4 py-2 text-sm">Graphic Design</span>
+            <span class="glass rounded-full px-4 py-2 text-sm">Technology</span>
+            <span class="glass rounded-full px-4 py-2 text-sm">Creative Problem Solving</span>
+          </div>
+        </div>
+
+        <div class="soft-card p-7 md:p-9">
+          <p class="section-label mb-6">Personal Details</p>
+
+          <div class="grid sm:grid-cols-2 gap-6">
+            <div>
+              <p class="muted text-sm mb-1">Full Name</p>
+              <p class="font-semibold">Dennis Fresnido</p>
+            </div>
+
+            <div>
+              <p class="muted text-sm mb-1">Course</p>
+              <p class="font-semibold">BS Computer Science</p>
+            </div>
+
+            <div>
+              <p class="muted text-sm mb-1">Year Level</p>
+              <p class="font-semibold">3rd Year</p>
+            </div>
+
+            <div>
+              <p class="muted text-sm mb-1">Phone</p>
+              <p class="font-semibold">09913956155</p>
+            </div>
+
+            <div>
+              <p class="muted text-sm mb-1">Birthdate</p>
+              <p class="font-semibold">September 22, 2005</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills" class="py-24 px-5 md:px-8 section-alt">
+    <div class="max-w-7xl mx-auto">
+
+      <p class="section-label mb-4">02 / Skills</p>
+      <h2 class="section-title mb-12">Tools & capabilities</h2>
+
+      <div class="grid md:grid-cols-2 gap-6">
+
+        <div class="soft-card p-8">
+          <div class="text-2xl accent mb-5">
+            <i class="fa-solid fa-code"></i>
+          </div>
+
+          <h3 class="text-xl font-bold mb-5">Technical Skills</h3>
+
+          <div class="space-y-4">
+
+            <div>
+              <div class="flex justify-between mb-2">
+                <span>HTML / CSS / JavaScript</span>
+                <span class="muted">Web</span>
+              </div>
+              <div class="h-1.5 rounded-full bg-white/10">
+                <div class="h-full w-[75%] rounded-full skill-bar"></div>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex justify-between mb-2">
+                <span>Python / Django</span>
+                <span class="muted">Development</span>
+              </div>
+              <div class="h-1.5 rounded-full bg-white/10">
+                <div class="h-full w-[70%] rounded-full skill-bar"></div>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex justify-between mb-2">
+                <span>MySQL / PostgreSQL</span>
+                <span class="muted">Database</span>
+              </div>
+              <div class="h-1.5 rounded-full bg-white/10">
+                <div class="h-full w-[65%] rounded-full skill-bar"></div>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex justify-between mb-2">
+                <span>Graphic Design</span>
+                <span class="muted">Creative</span>
+              </div>
+              <div class="h-1.5 rounded-full bg-white/10">
+                <div class="h-full w-[80%] rounded-full skill-bar"></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="soft-card p-8">
+          <div class="text-2xl accent mb-5">
+            <i class="fa-solid fa-lightbulb"></i>
+          </div>
+
+          <h3 class="text-xl font-bold mb-5">Professional Strengths</h3>
+
+          <div class="grid sm:grid-cols-2 gap-3">
+            <div class="glass rounded-xl p-4"><i class="fa-solid fa-check accent mr-2"></i>Problem Solving</div>
+            <div class="glass rounded-xl p-4"><i class="fa-solid fa-check accent mr-2"></i>Collaboration</div>
+            <div class="glass rounded-xl p-4"><i class="fa-solid fa-check accent mr-2"></i>Analytical Thinking</div>
+            <div class="glass rounded-xl p-4"><i class="fa-solid fa-check accent mr-2"></i>Teamwork</div>
+            <div class="glass rounded-xl p-4"><i class="fa-solid fa-check accent mr-2"></i>Adaptability</div>
+            <div class="glass rounded-xl p-4"><i class="fa-solid fa-check accent mr-2"></i>Time Management</div>
+            <div class="glass rounded-xl p-4"><i class="fa-solid fa-check accent mr-2"></i>Communication</div>
+            <div class="glass rounded-xl p-4"><i class="fa-solid fa-check accent mr-2"></i>Creative Thinking</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section id="experience" class="py-24 px-5 md:px-8">
+    <div class="max-w-7xl mx-auto">
+
+      <p class="section-label mb-4">03 / Experience</p>
+      <h2 class="section-title mb-12">Projects & experience</h2>
+
+      <div class="timeline-line ml-2 pl-8 space-y-8">
+
+        <article class="relative soft-card p-7 md:p-9">
+          <span class="timeline-dot"></span>
+
+          <p class="section-label mb-3">2023 – 2024</p>
+          <h3 class="text-xl font-bold mb-2">Work Immersion</h3>
+          <p class="accent font-semibold mb-4">
+            Provincial Disaster Risk Reduction and Management Office
+          </p>
+
+          <p class="muted leading-relaxed">
+            Completed a work immersion experience in a professional government office
+            environment, supporting assigned tasks and developing workplace communication,
+            teamwork, organization, and professional conduct.
+          </p>
+        </article>
+
+        <article class="relative soft-card p-7 md:p-9">
+          <span class="timeline-dot"></span>
+
+          <p class="section-label mb-3">2025 – 2026</p>
+          <h3 class="text-xl font-bold mb-2">FCUUE</h3>
+          <p class="accent font-semibold mb-4">
+            Project Leader / Programmer / Database Developer
+          </p>
+
+          <p class="muted leading-relaxed">
+            Contributed to system development, project coordination, programming,
+            database work, testing, and documentation using technologies including
+            Python, Django, JavaScript, and databases.
+          </p>
+
+          <div class="homepage-frame">
+            <img src="FCUUE.jpg"
+                 alt="FCUUE project homepage screenshot"
+                 loading="lazy">
+          </div>
+        </article>
+
+        <article class="relative soft-card p-7 md:p-9">
+          <span class="timeline-dot"></span>
+
+          <p class="section-label mb-3">2023 – 2024</p>
+          <h3 class="text-xl font-bold mb-2">FCU Online Yearbook System</h3>
+          <p class="accent font-semibold mb-4">Project Designer</p>
+
+          <p class="muted leading-relaxed">
+            Participated in system design and development using web technologies and MySQL.
+            The project received recognition as Best Research in TVL-ICT.
+          </p>
+
+          <div class="homepage-frame">
+            <img src="onlineyearbook.jpg"
+                 alt="FCU Online Yearbook System homepage screenshot"
+                 loading="lazy">
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section id="education" class="py-24 px-5 md:px-8 section-alt">
+    <div class="max-w-7xl mx-auto">
+
+      <p class="section-label mb-4">04 / Education</p>
+      <h2 class="section-title mb-12">Academic background</h2>
+
+      <div class="grid md:grid-cols-2 gap-6">
+
+        <article class="soft-card p-8">
+          <p class="section-label mb-3">2024 – 2028</p>
+          <h3 class="text-xl font-bold mb-2">Bachelor of Science in Computer Science</h3>
+          <p class="accent font-semibold mb-6">Filamer Christian University</p>
+
+          <h4 class="font-semibold mb-4">Recognition</h4>
+
+          <ul class="muted space-y-3">
+            <li><i class="fa-solid fa-award accent mr-2"></i>Leadership Awardee - FCUSR CCS</li>
+            <li><i class="fa-solid fa-award accent mr-2"></i>Leadership Awardee - FCUSR NATIONALS</li>
+            <li><i class="fa-solid fa-award accent mr-2"></i>Service Awardee - AWANA Youth FCU Chapter</li>
+            <li><i class="fa-solid fa-award accent mr-2"></i>Service Awardee - Students Reform Party</li>
+          </ul>
+        </article>
+
+        <article class="soft-card p-8">
+          <p class="section-label mb-3">2022 – 2024</p>
+          <h3 class="text-xl font-bold mb-2">Senior High School - TVL-ICT</h3>
+          <p class="accent font-semibold mb-6">Filamer Christian University</p>
+
+          <h4 class="font-semibold mb-4">Recognition</h4>
+
+          <ul class="muted space-y-3">
+            <li><i class="fa-solid fa-award accent mr-2"></i>Academic Awardee</li>
+            <li><i class="fa-solid fa-award accent mr-2"></i>Leadership Awardee - FCU Blueprint</li>
+            <li><i class="fa-solid fa-award accent mr-2"></i>Journalist of the Year - The Hillside Echo - Senior</li>
+            <li><i class="fa-solid fa-award accent mr-2"></i>Service Awardee - The Hillside Echo - Senior</li>
+          </ul>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Certificates -->
+  <section id="certificates" class="py-24 px-5 md:px-8">
+    <div class="max-w-7xl mx-auto">
+
+      <p class="section-label mb-4">05 / Certificates</p>
+      <h2 class="section-title mb-5">Certificates & achievements</h2>
+      <p class="muted max-w-2xl mb-12">
+        A collection of certificates, recognitions, and milestones.
+      </p>
+
+      <div id="certificate-gallery"
+           class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+
+    </div>
+  </section>
+
+  <!-- Graphics - Images are stored in the root directory -->
+  <section id="graphics" class="py-24 px-5 md:px-8 section-alt">
+    <div class="max-w-7xl mx-auto">
+
+      <p class="section-label mb-4">06 / Selected work</p>
+      <h2 class="section-title mb-5">Graphic design</h2>
+      <p class="muted max-w-2xl mb-12">
+        A selection of visual designs, graphics, layouts, and creative work.
+      </p>
+
+      <div id="graphics-gallery"
+           class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+
+    </div>
+  </section>
+
+  <!-- Contact & Social Links -->
+  <section id="contact" class="contact-links py-24 px-5 md:px-8">
+    <div class="max-w-7xl mx-auto">
+
+      <p class="section-label mb-4">07 / Connect</p>
+      <h2 class="section-title mb-5">
+        Let's <span class="accent">connect.</span>
+      </h2>
+
+      <p class="muted max-w-2xl mb-12">
+        Feel free to explore my work or connect with me professionally
+        through my social platforms.
+      </p>
+
+      <div class="grid md:grid-cols-2 gap-5">
+
+        <!-- GitHub -->
+        <a href="https://github.com/ednis22"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="contact-link">
+
+          <i class="fa-brands fa-github contact-icon"></i>
+
+          <div>
+            <p class="contact-label">GitHub</p>
+            <p class="contact-subtext">Explore my repositories</p>
+          </div>
+
+          <i class="fa-solid fa-arrow-up-right-from-square ml-auto !text-sm !text-white/50"></i>
+        </a>
+
+        <!-- LinkedIn -->
+        <a href="https://www.linkedin.com/in/dennis-fresnido-82971b3b5/"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="contact-link">
+
+          <i class="fa-brands fa-linkedin contact-icon"></i>
+
+          <div>
+            <p class="contact-label">LinkedIn</p>
+            <p class="contact-subtext">Connect professionally</p>
+          </div>
+
+          <i class="fa-solid fa-arrow-up-right-from-square ml-auto !text-sm !text-white/50"></i>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-[#C50337]/10 py-10 px-5 md:px-8">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
+
+      <p class="brand font-bold">D<span class="accent">.</span>FRESNIDO</p>
+
+      <p class="muted text-sm">
+        © 2026 Dennis Fresnido. All rights reserved.
+      </p>
+
+      <a href="#home" class="text-sm nav-link">
+        Back to top <i class="fa-solid fa-arrow-up ml-1 accent"></i>
+      </a>
+
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu
+    const menuBtn = document.getElementById("menu-btn");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const menuIcon = document.getElementById("menu-icon");
+
+    menuBtn.addEventListener("click", () => {
+      mobileMenu.classList.toggle("hidden");
+
+      const open = !mobileMenu.classList.contains("hidden");
+      menuBtn.setAttribute("aria-expanded", open);
+      menuIcon.className = open
+        ? "fa-solid fa-xmark"
+        : "fa-solid fa-bars";
+    });
+
+    document.querySelectorAll(".mobile-link").forEach(link => {
+      link.addEventListener("click", () => {
+        mobileMenu.classList.add("hidden");
+        menuBtn.setAttribute("aria-expanded", "false");
+        menuIcon.className = "fa-solid fa-bars";
+      });
+    });
+
+    // Certificate filenames
+    const certificates = [
+      "SupportTraining.png",
+      "Debate.jpg",
+      "THES4.jpg",
+      "vicemayor.jpg",
+      "awana.jpg",
+      "THES6.jpg",
+      "FBP.jpg",
+      "THES2.jpg",
+      "Contemporary.jpg",
+      "nationals(1).jpg",
+      "nationals.jpg",
+      "THES1.jpg",
+      "THES3.jpg",
+      "Acads1.jpg",
+      "Layout.jpg",
+      "Immersion3.jpg",
+      "model.jpg",
+      "THES5.jpg",
+      "Acads.jpg",
+      "Sadsad.jpg",
+      "Srp.jpg",
+      "Immersion1.jpg",
+      "Acads2.jpg",
+      "Immersion2.jpg"
+    ];
+
+    // Graphics filenames - files are now directly beside index.html
+    const graphics = [
+      "graphics15.jpg",
+      "freedom.jpg",
+      "graphics4.jpg",
+      "graphics10.jpg",
+      "graphics12.png",
+      "esports.png",
+      "graphics13.png",
+      "graphics2.png",
+      "download.jpg",
+      "1.jpg",
+      "graphics1.png",
+      "graphics14.jpg",
+      "graphics3.png",
+      "graphics11.png",
+      "2.png"
+    ];
+
+    // Gallery renderer
+    function renderGallery(files, folder, containerId) {
+      const container = document.getElementById(containerId);
+
+      files.forEach(file => {
+        const card = document.createElement("div");
+        card.className = "soft-card gallery-card";
+
+        const img = document.createElement("img");
+
+        // If folder is empty, load from root directory
+        img.src = folder ? `${folder}/${file}` : file;
+
+        img.alt = file;
+        img.loading = "lazy";
+        img.className = "gallery-image";
+
+        card.appendChild(img);
+        container.appendChild(card);
+      });
+    }
+
+    // Render certificates from CERTIFICATES folder
+    renderGallery(certificates, "CERTIFICATES", "certificate-gallery");
+
+    // Render graphics directly from root directory (no GRAPHICS folder)
+    renderGallery(graphics, "", "graphics-gallery");
+
+    // Loader fade
+    window.addEventListener("load", () => {
+      const loader = document.getElementById("loader");
+
+      setTimeout(() => {
+        loader.style.opacity = "0";
+        setTimeout(() => loader.remove(), 500);
+      }, 1200);
+    });
+  </script>
+
+</body>
+</html>
